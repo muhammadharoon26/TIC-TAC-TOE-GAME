@@ -32,7 +32,7 @@ int main()
 		draw_board();
 
 		settextstyle(10, 0, 9);
-		GetCursorPos(&pos);
+		
 		if(player==1)
 		{
 			setcolor(GREEN);
@@ -46,6 +46,7 @@ int main()
 
 		if (GetAsyncKeyState(VK_LBUTTON))
 		{
+			GetCursorPos(&pos);
 			//FIRST_ROW
 			if ((pos.x < 500) && (pos.x > 370) && (pos.y < 170) && (pos.y > 50))
 			{
@@ -62,6 +63,7 @@ int main()
 				{
 					array[1]=11;
 				}
+				player=(player==1)?2:1;
 			}
 			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 170) && (pos.y > 50))
 			{
@@ -77,6 +79,7 @@ int main()
 				{
 					array[2]=12;
 				}
+				player=(player==1)?2:1;
 			}
 			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 170) && (pos.y > 50))
 			{
@@ -92,6 +95,7 @@ int main()
 				{
 					array[3]=13;
 				}
+				player=(player==1)?2:1;
 			}
 			//SECOND_ROW
 			else if ((pos.x < 500) && (pos.x > 370) && (pos.y < 335) && (pos.y > 170))
@@ -108,6 +112,7 @@ int main()
 				{
 					array[4]=14;
 				}
+				player=(player==1)?2:1;
 			}
 			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 335) && (pos.y > 170))
 			{
@@ -123,6 +128,7 @@ int main()
 				{
 					array[5]=15;
 				}
+				player=(player==1)?2:1;
 			}
 			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 335) && (pos.y > 170))
 			{
@@ -138,6 +144,7 @@ int main()
 				{
 					array[6]=16;
 				}
+				player=(player==1)?2:1;
 			}
 			//THRD_ROW
 			else if ((pos.x < 500) && (pos.x > 370) && (pos.y < 480) && (pos.y > 335))
@@ -154,6 +161,7 @@ int main()
 				{
 					array[7]=17;
 				}
+				player=(player==1)?2:1;
 			}
 			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 480) && (pos.y > 335))
 			{
@@ -169,6 +177,7 @@ int main()
 				{
 					array[8]=18;
 				}
+				player=(player==1)?2:1;
 			}
 			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 480) && (pos.y > 335))
 			{
@@ -184,17 +193,12 @@ int main()
 				{
 					array[9]=19;
 				}
+				player=(player==1)?2:1;
 			}
+			
 		}
 		k= win();
-		if(player==1)
-		{
-			player=2;
-		}
-		else if(player==2)
-		{
-			player=1;
-		}
+		
 	} 
 	while(k==-1);
 	if(k==1)
@@ -355,6 +359,7 @@ int win()
 	{
 		return -1;
 	}
+
 }
 
 
