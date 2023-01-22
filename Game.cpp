@@ -43,8 +43,7 @@ int main()
 			setcolor(BROWN);
 			mark[0]='O';
 		}
-
-		if (GetAsyncKeyState(VK_LBUTTON))
+		if(GetAsyncKeyState(VK_LBUTTON))
 		{
 			GetCursorPos(&pos);
 			//FIRST_ROW
