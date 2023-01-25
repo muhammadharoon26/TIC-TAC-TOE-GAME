@@ -43,160 +43,168 @@ int main()
 			setcolor(BROWN);
 			mark[0]='O';
 		}
-		if(GetAsyncKeyState(VK_LBUTTON))
-		{
-			GetCursorPos(&pos);
-			//FIRST_ROW
-			if ((pos.x < 500) && (pos.x > 370) && (pos.y < 170) && (pos.y > 50))
-			{
-				choice_x = 410;
-				choice_y = 62;
-				
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
+		 if (!kbhit())
+        {
+            if (ismouseclick(WM_LBUTTONDOWN))
+            {
+                int x,y;
+                getmouseclick(WM_LBUTTONDOWN, x, y);
+                //FIRST_ROW
+                if ((x < 500) && (x > 370) && (y < 170) && (y > 50))
+                {
+                    choice_x = 410;
+                    choice_y = 62;
+
+                    sprintf(mark, "%c", mark[0]);
+                    outtextxy(choice_x, choice_y, mark);
+                    if(mark[0]=='X')
+                    {
+                        array[1]=1;
+                    }
+                    else if(mark[0]=='O')
+                    {
+                        array[1]=11;
+                    }
+                    player=(player==1)?2:1;
+                }
+                else if ((x < 770) && (x > 500) && (y < 170) && (y > 50))
+                {
+                    choice_x = 610;
+                    choice_y = 62;
+                    sprintf(mark, "%c", mark[0]);
+                    outtextxy(choice_x, choice_y, mark);
+                    if(mark[0]=='X')
+                    {
+                        array[2]=2;
+                    }
+                    else
+                    {
+                        array[2]=12;
+                    }
+                    player=(player==1)?2:1;
+                }
+                else if ((x < 900) && (x > 770) && (y < 170) && (y > 50))
+                {
+                    choice_x = 810;
+                    choice_y = 62;
+                    sprintf(mark, "%c", mark[0]);
+                    outtextxy(choice_x, choice_y, mark);
+                    if(mark[0]=='X')
+                    {
+                        array[3]=3;
+                    }
+                    else
+                    {
+                        array[3]=13;
+                    }
+                    player=(player==1)?2:1;
+            	}
+            	//Second Row
+            	else if ((x < 500) && (x > 370) && (y < 335) && (y > 170))
 				{
-					array[1]=1;
+					choice_x = 410;
+					choice_y = 200;
+					sprintf(mark, "%c", mark[0]);
+					outtextxy(choice_x, choice_y, mark);
+					if(mark[0]=='X')
+					{
+						array[4]=4;
+					}
+					else
+					{
+						array[4]=14;
+					}
+					player=(player==1)?2:1;
 				}
-				else if(mark[0]=='O')
+				else if ((x < 770) && (x > 500) && (y < 335) && (y > 170))
 				{
-					array[1]=11;
+					choice_x = 610;
+					choice_y = 200;
+					sprintf(mark, "%c", mark[0]);
+					outtextxy(choice_x, choice_y, mark);
+					if(mark[0]=='X')
+					{
+						array[5]=5;
+					}
+					else
+					{
+						array[5]=15;
+					}
+					player=(player==1)?2:1;
 				}
-				player=(player==1)?2:1;
-			}
-			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 170) && (pos.y > 50))
-			{
-				choice_x = 610;
-				choice_y = 62;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
+				else if ((x < 900) && (x > 770) && (y < 335) && (y > 170))
 				{
-					array[2]=2;
+					choice_x = 810;
+					choice_y = 200;
+					sprintf(mark, "%c", mark[0]);
+					outtextxy(choice_x, choice_y, mark);
+					if(mark[0]=='X')
+					{
+						array[6]=6;
+					}
+					else
+					{
+						array[6]=16;
+					}
+					player=(player==1)?2:1;
 				}
-				else
+				//THRD_ROW
+				else if ((x < 500) && (x > 370) && (y < 480) && (y > 335))
 				{
-					array[2]=12;
+					choice_x = 410;
+					choice_y = 362;
+					sprintf(mark, "%c", mark[0]);
+					outtextxy(choice_x, choice_y, mark);
+					if(mark[0]=='X')
+					{
+						array[7]=7;
+					}
+					else
+					{
+						array[7]=17;
+					}
+					player=(player==1)?2:1;
 				}
-				player=(player==1)?2:1;
-			}
-			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 170) && (pos.y > 50))
-			{
-				choice_x = 810;
-				choice_y = 62;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
+				else if ((x < 770) && (x > 500) && (y < 480) && (y > 335))
 				{
-					array[3]=3;
+					choice_x = 610;
+					choice_y = 362;
+					sprintf(mark, "%c", mark[0]);
+					outtextxy(choice_x, choice_y, mark);
+					if(mark[0]=='X')
+					{
+						array[8]=8;
+					}
+					else
+					{
+						array[8]=18;
+					}
+					player=(player==1)?2:1;
 				}
-				else
+				else if ((x < 900) && (x > 770) && (y < 480) && (y > 335))
 				{
-					array[3]=13;
+					choice_x = 810;
+					choice_y = 362;
+					sprintf(mark, "%c", mark[0]);
+					outtextxy(choice_x, choice_y, mark);
+					if(mark[0]=='X')
+					{
+						array[9]=9;
+					}
+					else
+					{
+						array[9]=19;
+					}
+					player=(player==1)?2:1;
 				}
-				player=(player==1)?2:1;
-			}
-			//SECOND_ROW
-			else if ((pos.x < 500) && (pos.x > 370) && (pos.y < 335) && (pos.y > 170))
-			{
-				choice_x = 410;
-				choice_y = 200;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
-				{
-					array[4]=4;
-				}
-				else
-				{
-					array[4]=14;
-				}
-				player=(player==1)?2:1;
-			}
-			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 335) && (pos.y > 170))
-			{
-				choice_x = 610;
-				choice_y = 200;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
-				{
-					array[5]=5;
-				}
-				else
-				{
-					array[5]=15;
-				}
-				player=(player==1)?2:1;
-			}
-			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 335) && (pos.y > 170))
-			{
-				choice_x = 810;
-				choice_y = 200;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
-				{
-					array[6]=6;
-				}
-				else
-				{
-					array[6]=16;
-				}
-				player=(player==1)?2:1;
-			}
-			//THRD_ROW
-			else if ((pos.x < 500) && (pos.x > 370) && (pos.y < 480) && (pos.y > 335))
-			{
-				choice_x = 410;
-				choice_y = 362;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
-				{
-					array[7]=7;
-				}
-				else
-				{
-					array[7]=17;
-				}
-				player=(player==1)?2:1;
-			}
-			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 480) && (pos.y > 335))
-			{
-				choice_x = 610;
-				choice_y = 362;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
-				{
-					array[8]=8;
-				}
-				else
-				{
-					array[8]=18;
-				}
-				player=(player==1)?2:1;
-			}
-			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 480) && (pos.y > 335))
-			{
-				choice_x = 810;
-				choice_y = 362;
-				sprintf(mark, "%c", mark[0]);
-				outtextxy(choice_x, choice_y, mark);
-				if(mark[0]=='X')
-				{
-					array[9]=9;
-				}
-				else
-				{
-					array[9]=19;
-				}
-				player=(player==1)?2:1;
-			}
-			
-		}
+        	}
+        }
+
 		k= win();
+		if(k==1)
+		{
+			getch();
+		}
 		
 	} 
 	while(k==-1);
@@ -360,5 +368,67 @@ int win()
 	}
 
 }
-
+		
+		
+		
+		
+//		if(GetAsyncKeyState(VK_LBUTTON))
+//		{
+//			GetCursorPos(&pos);
+//			//FIRST_ROW
+//			if ((pos.x < 500) && (pos.x > 370) && (pos.y < 170) && (pos.y > 50))
+//			{
+//				choice_x = 410;
+//				choice_y = 62;
+//				
+//				sprintf(mark, "%c", mark[0]);
+//				outtextxy(choice_x, choice_y, mark);
+//				if(mark[0]=='X')
+//				{
+//					array[1]=1;
+//				}
+//				else if(mark[0]=='O')
+//				{
+//					array[1]=11;
+//				}
+//				player=(player==1)?2:1;
+//			}
+//			else if ((pos.x < 770) && (pos.x > 500) && (pos.y < 170) && (pos.y > 50))
+//			{
+//				choice_x = 610;
+//				choice_y = 62;
+//				sprintf(mark, "%c", mark[0]);
+//				outtextxy(choice_x, choice_y, mark);
+//				if(mark[0]=='X')
+//				{
+//					array[2]=2;
+//				}
+//				else
+//				{
+//					array[2]=12;
+//				}
+//				player=(player==1)?2:1;
+//			}
+//			else if ((pos.x < 900) && (pos.x > 770) && (pos.y < 170) && (pos.y > 50))
+//			{
+//				choice_x = 810;
+//				choice_y = 62;
+//				sprintf(mark, "%c", mark[0]);
+//				outtextxy(choice_x, choice_y, mark);
+//				if(mark[0]=='X')
+//				{
+//					array[3]=3;
+//				}
+//				else
+//				{
+//					array[3]=13;
+//				}
+//				player=(player==1)?2:1;
+//			}
+//			//SECOND_ROW
+			
+			
+			
+//			
+//		}
 
