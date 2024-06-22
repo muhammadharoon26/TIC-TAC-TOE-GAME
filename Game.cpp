@@ -1,18 +1,12 @@
-#include<graphics.h>
 #include<iostream>
-#include<conio.h>
-#include<windows.h>
-#include<stdio.h>
+#include<graphics.h>
 
 using namespace std;
 
 int gd = DETECT, gm;
 
-
-int choice_x, choice_y,k,player = 1,x,y,i;
-char choice[50];
-char mark[1],array[10];
-POINT pos;
+int choice_x,choice_y,player = 1,k,x,y;
+char choice[50],mark[1],array[10];
 
 int play_game();
 int win();
@@ -22,10 +16,6 @@ int main()
 {
 	initgraph(&gd, &gm, 0);
 	play_game();
-	if(k==1)
-	{
-		Congrats_Winner();
-	}
 	getch();
 }
 
@@ -47,13 +37,10 @@ int play_game()
 	int w = textwidth("Tic Tac Toe");
 	settextstyle(10, 0, 5);
 	outtextxy(500, 2, "Tic Tac Toe");
-	
 	do
 	{
 		draw_board();
-
 		settextstyle(10, 0, 9);
-		
 		if(player==1)
 		{
 			mark[0]='X';
@@ -62,177 +49,168 @@ int play_game()
 		{
 			mark[0]='O';
 		}
-		 if (!kbhit())
+        getmouseclick(WM_LBUTTONDOWN, x, y);
+        //FIRST_ROW
+        if ((x < 500) && (x > 370) && (y < 170) && (y > 50))
         {
-            if (ismouseclick(WM_LBUTTONDOWN))
+            choice_x = 410;
+            choice_y = 62;
+            sprintf(mark, "%c", mark[0]);
+            outtextxy(choice_x, choice_y, mark);
+            if(mark[0]=='X')
             {
-                int x,y;
-                getmouseclick(WM_LBUTTONDOWN, x, y);
-                //FIRST_ROW
-                if ((x < 500) && (x > 370) && (y < 170) && (y > 50))
-                {
-                    choice_x = 410;
-                    choice_y = 62;
-
-                    sprintf(mark, "%c", mark[0]);
-                    outtextxy(choice_x, choice_y, mark);
-                    if(mark[0]=='X')
-                    {
-                        array[1]=1;
-                    }
-                    else if(mark[0]=='O')
-                    {
-                        array[1]=11;
-                    }
-                    player=(player==1)?2:1;
-                }
-                else if ((x < 770) && (x > 500) && (y < 170) && (y > 50))
-                {
-                    choice_x = 610;
-                    choice_y = 62;
-                    sprintf(mark, "%c", mark[0]);
-                    outtextxy(choice_x, choice_y, mark);
-                    if(mark[0]=='X')
-                    {
-                        array[2]=2;
-                    }
-                    else
-                    {
-                        array[2]=12;
-                    }
-                    player=(player==1)?2:1;
-                }
-                else if ((x < 900) && (x > 770) && (y < 170) && (y > 50))
-                {
-                    choice_x = 810;
-                    choice_y = 62;
-                    sprintf(mark, "%c", mark[0]);
-                    outtextxy(choice_x, choice_y, mark);
-                    if(mark[0]=='X')
-                    {
-                        array[3]=3;
-                    }
-                    else
-                    {
-                        array[3]=13;
-                    }
-                    player=(player==1)?2:1;
-            	}
-            	//Second Row
-            	else if ((x < 500) && (x > 370) && (y < 335) && (y > 170))
-				{
-					choice_x = 410;
-					choice_y = 200;
-					sprintf(mark, "%c", mark[0]);
-					outtextxy(choice_x, choice_y, mark);
-					if(mark[0]=='X')
-					{
-						array[4]=4;
-					}
-					else
-					{
-						array[4]=14;
-					}
-					player=(player==1)?2:1;
-				}
-				else if ((x < 770) && (x > 500) && (y < 335) && (y > 170))
-				{
-					choice_x = 610;
-					choice_y = 200;
-					sprintf(mark, "%c", mark[0]);
-					outtextxy(choice_x, choice_y, mark);
-					if(mark[0]=='X')
-					{
-						array[5]=5;
-					}
-					else
-					{
-						array[5]=15;
-					}
-					player=(player==1)?2:1;
-				}
-				else if ((x < 900) && (x > 770) && (y < 335) && (y > 170))
-				{
-					choice_x = 810;
-					choice_y = 200;
-					sprintf(mark, "%c", mark[0]);
-					outtextxy(choice_x, choice_y, mark);
-					if(mark[0]=='X')
-					{
-						array[6]=6;
-					}
-					else
-					{
-						array[6]=16;
-					}
-					player=(player==1)?2:1;
-				}
-				//THRD_ROW
-				else if ((x < 500) && (x > 370) && (y < 480) && (y > 335))
-				{
-					choice_x = 410;
-					choice_y = 362;
-					sprintf(mark, "%c", mark[0]);
-					outtextxy(choice_x, choice_y, mark);
-					if(mark[0]=='X')
-					{
-						array[7]=7;
-					}
-					else
-					{
-						array[7]=17;
-					}
-					player=(player==1)?2:1;
-				}
-				else if ((x < 770) && (x > 500) && (y < 480) && (y > 335))
-				{
-					choice_x = 610;
-					choice_y = 362;
-					sprintf(mark, "%c", mark[0]);
-					outtextxy(choice_x, choice_y, mark);
-					if(mark[0]=='X')
-					{
-						array[8]=8;
-					}
-					else
-					{
-						array[8]=18;
-					}
-					player=(player==1)?2:1;
-				}
-				else if ((x < 900) && (x > 770) && (y < 480) && (y > 335))
-				{
-					choice_x = 810;
-					choice_y = 362;
-					sprintf(mark, "%c", mark[0]);
-					outtextxy(choice_x, choice_y, mark);
-					if(mark[0]=='X')
-					{
-						array[9]=9;
-					}
-					else
-					{
-						array[9]=19;
-					}
-					player=(player==1)?2:1;
-				}
-        	}
+                array[1]=1;
+            }
+            else if(mark[0]=='O')
+            {
+                array[1]=11;
+            }
+            player=(player==1)?2:1;
         }
-
+        else if ((x < 770) && (x > 500) && (y < 170) && (y > 50))
+        {
+            choice_x = 610;
+            choice_y = 62;
+            sprintf(mark, "%c", mark[0]);
+            outtextxy(choice_x, choice_y, mark);
+            if(mark[0]=='X')
+            {
+                array[2]=2;
+            }
+            else
+            {
+                array[2]=12;
+            }
+            player=(player==1)?2:1;
+        }
+        else if ((x < 900) && (x > 770) && (y < 170) && (y > 50))
+        {
+            choice_x = 810;
+            choice_y = 62;
+            sprintf(mark, "%c", mark[0]);
+            outtextxy(choice_x, choice_y, mark);
+            if(mark[0]=='X')
+            {
+                array[3]=3;
+            }
+            else
+            {
+                array[3]=13;
+            }
+            player=(player==1)?2:1;
+    	}
+    	//Second Row
+    	else if ((x < 500) && (x > 370) && (y < 335) && (y > 170))
+		{
+			choice_x = 410;
+			choice_y = 200;
+			sprintf(mark, "%c", mark[0]);
+			outtextxy(choice_x, choice_y, mark);
+			if(mark[0]=='X')
+			{
+				array[4]=4;
+			}
+			else
+			{
+				array[4]=14;
+			}
+			player=(player==1)?2:1;
+		}
+		else if ((x < 770) && (x > 500) && (y < 335) && (y > 170))
+		{
+			choice_x = 610;
+			choice_y = 200;
+			sprintf(mark, "%c", mark[0]);
+			outtextxy(choice_x, choice_y, mark);
+			if(mark[0]=='X')
+			{
+				array[5]=5;
+			}
+			else
+			{
+				array[5]=15;
+			}
+			player=(player==1)?2:1;
+		}
+		else if ((x < 900) && (x > 770) && (y < 335) && (y > 170))
+		{
+			choice_x = 810;
+			choice_y = 200;
+			sprintf(mark, "%c", mark[0]);
+			outtextxy(choice_x, choice_y, mark);
+			if(mark[0]=='X')
+			{
+				array[6]=6;
+			}
+			else
+			{
+				array[6]=16;
+			}
+			player=(player==1)?2:1;
+		}
+		//THRD_ROW
+		else if ((x < 500) && (x > 370) && (y < 480) && (y > 335))
+		{
+			choice_x = 410;
+			choice_y = 362;
+			sprintf(mark, "%c", mark[0]);
+			outtextxy(choice_x, choice_y, mark);
+			if(mark[0]=='X')
+			{
+				array[7]=7;
+			}
+			else
+			{
+				array[7]=17;
+			}
+			player=(player==1)?2:1;
+		}
+		else if ((x < 770) && (x > 500) && (y < 480) && (y > 335))
+		{
+			choice_x = 610;
+			choice_y = 362;
+			sprintf(mark, "%c", mark[0]);
+			outtextxy(choice_x, choice_y, mark);
+			if(mark[0]=='X')
+			{
+				array[8]=8;
+			}
+			else
+			{
+				array[8]=18;
+			}
+			player=(player==1)?2:1;
+		}
+		else if ((x < 900) && (x > 770) && (y < 480) && (y > 335))
+		{
+			choice_x = 810;
+			choice_y = 362;
+			sprintf(mark, "%c", mark[0]);
+			outtextxy(choice_x, choice_y, mark);
+			if(mark[0]=='X')
+			{
+				array[9]=9;
+			}
+			else
+			{
+				array[9]=19;
+			}
+			player=(player==1)?2:1;
+		}
 		k= win();
 		if(k==1)
 		{
 			delay(900);
+			Congrats_Winner();
 		}
-		
 	} 
 	while(k==-1);
+	return 0;
 }
 int win()
 {
 //	rows
 	//first row
-	
 	if(((array[1]==1)&&(array[2]==2)&&(array[3]==3)) || ((array[1]==11)&&(array[2]==12)&&(array[3]==13)))
 	{
 		if((array[1]==1)&&(array[2]==2)&&(array[3]==3))
@@ -274,7 +252,7 @@ int win()
 		}
 		return 1;
 	}
-//column
+//columns
 	//first column
 	else if(((array[1]==1)&&(array[4]==4)&&(array[7]==7)) || ((array[1]==11)&&(array[4]==14)&&(array[7]==17)))
 	{
@@ -353,12 +331,8 @@ int win()
 int Congrats_Winner()
 {
 	initwindow(1275, 1000, "Congrats Winner");
-	
     settextstyle(10, 0, 9);
-    setcolor(CYAN);
     outtextxy(170, 250, "Congratulations");
     outtextxy(1030, 250, mark);
-    setbkcolor(YELLOW);
     getch();
 }
-
